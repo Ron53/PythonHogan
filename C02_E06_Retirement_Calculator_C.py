@@ -25,6 +25,7 @@
 #
 # MODIFICATION HISTORY
 #	2019-02-18  Change variable names to something more meaningful [RW]
+#	2019-02-18  Changed "flag" to boolean
 #
 #
 
@@ -60,17 +61,17 @@ print("You are looking to retire in the year",now.year+ret_age -user_age,"\n"  )
 
 
 init_bal = int(input("How much do you already have in a retirement account?  "))
-rate = int(input("What annual return are you getting on your retirement account? \n   (7 is a reasonable return to expect from the stock market)  \n"))
+rate = int(input("What annual return are you getting on your retirement account? \n   (7 is a reasonable return to expect from the stock market)  "))
 
 
-flag = 0
+flag = True
 rate = rate / 100
 dep = 10000
 if init_bal < dep:
 	init_bal = dep
 
 
-while flag == 0:
+while flag:
 
 	bal = init_bal
 	for i in range(1, ret_age -user_age  ):
@@ -85,12 +86,12 @@ while flag == 0:
 		if dep > 4:
 			dep = dep / 2
 		else:
-			flag = 1
+			flag = False
 	elif bal <= 950000:
 		dep = dep + dep / 2
 	else:
-		flag = 1
+		flag = False
 
-print("Depositing",dep,"every year into an account increasing",rate*100,"% annually \n   will give you about $1 million at retirement.")
+print("\nDepositing",dep,"every year into an account increasing",rate*100,"% annually \n   will give you about $1 million at retirement.")
 
 print("\n \n OK")
