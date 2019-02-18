@@ -22,7 +22,9 @@
 #	Text with name
 #	Text with years to retirement
 #	Text with retirement year
-
+#
+# MODIFICATION HISTORY
+#	2019-02-18  Change variable names to something more meaningful [RW]
 #
 #
 
@@ -32,36 +34,33 @@ now = datetime.datetime.now()
 
 lim = 0
 
-a = input("What is your name?  ")
-print("Welcome,",a,"to Ron's Magnificent Retirement Calculator")
-print()
+user_name = input("What is your name?  ")
+print("Welcome,",user_name,"to Ron's Magnificent Retirement Calculator\n")
 
 
-b = 0
-while(b <= lim):
-	b = int(input("How many years old are you today?  "))
-	if b <= lim:
+user_age = 0
+while(user_age   <= lim):
+	user_age = int(input("How many years old are you today?  "))
+	if user_age   <= lim:
 		print("Come on! I know you've been born already! Try again...")
-		b = 0
-print("Very good, you are",b,"years old today.")
-print()
+		user_age = 0
+print("Very good, you are",user_age  ,"years old today.\n")
 
 
-c = 0
-while(c <= b):
-	c = int(input("At what age do you want to retire?  "))
-	if c <= b:
-		print("OK, let's try an age in the future now.")
-		c = 0
-print()
-print("You want to retire at age ",c)
-print("Age",c,"is",c-b,"years away.")
-print("You are looking to retire in the year",now.year+c-b)
-print()
+ret_age  = 0
+while(ret_age  <= user_age):
+	ret_age  = int(input("At what age do you want to retire?  "))
+	if ret_age  <= user_age  :
+		print("OK, let's try an age in the future now.\n")
+		ret_age  = 0
+
+print("You want to retire at age ",ret_age )
+print("Age",ret_age ,"is",ret_age -user_age,"years away.")
+print("You are looking to retire in the year",now.year+ret_age -user_age,"\n"  )
 
 
 init_bal = int(input("How much do you already have in a retirement account?  "))
-rate = int(input("What annual return are you getting on your retirement account?  "))
+rate = int(input("What annual return are you getting on your retirement account? \n   (7 is a reasonable return to expect from the stock market)  \n"))
 
 
 flag = 0
@@ -74,7 +73,7 @@ if init_bal < dep:
 while flag == 0:
 
 	bal = init_bal
-	for i in range(1, c-b):
+	for i in range(1, ret_age -user_age  ):
 		bal = bal * (1 + rate)
 		bal = bal + dep
 
@@ -92,6 +91,6 @@ while flag == 0:
 	else:
 		flag = 1
 
-print("Depositing",dep,"every year into an account increasing",rate*100,"% annually will give you about $1 million at retirement.")
+print("Depositing",dep,"every year into an account increasing",rate*100,"% annually \n   will give you about $1 million at retirement.")
 
-print("OK")
+print("\n \n OK")
