@@ -36,28 +36,40 @@ now = datetime.datetime.now()
 lim = 0
 
 user_name = input("What is your name?  ")
-print("Welcome,",user_name,"to Ron's Magnificent Retirement Calculator\n")
+welcome =f"Welcome, {user_name}, to Ron's Magnificent Retirememnt Calculator!\n"
+print(welcome)
 
 
 user_age = 0
+ask_age = f"How many years old are you today?  "
+bad_age = f"Come on! I know you've been born already! Try again..."
+give_age = f"Very good, you are {user_age} years old today.\n"
 while(user_age   <= lim):
-	user_age = int(input("How many years old are you today?  "))
+	user_age = int(input(ask_age))
 	if user_age   <= lim:
-		print("Come on! I know you've been born already! Try again...")
+		print(bad_age)
 		user_age = 0
-print("Very good, you are",user_age  ,"years old today.\n")
+print(give_age)
 
 
 ret_age  = 0
+ask_ret_age = f"At what age do you want to retire?  "
+bad_ret_age = f"OK, let's try an age in the future now.\n"
+
+print("#1",ret_age, user_age)
 while(ret_age  <= user_age):
-	ret_age  = int(input("At what age do you want to retire?  "))
+	ret_age  = int(input(ask_ret_age))
+	print("#2",ret_age, user_age)
 	if ret_age  <= user_age  :
-		print("OK, let's try an age in the future now.\n")
+		print(bad_ret_age)
 		ret_age  = 0
 
-print("You want to retire at age ",ret_age )
-print("Age",ret_age ,"is",ret_age -user_age,"years away.")
-print("You are looking to retire in the year",now.year+ret_age -user_age,"\n"  )
+give_ret_age = f"You want to retire at age {ret_age}"
+give_ret_yrs_away = f"Age {ret_age} is {ret_age -user_age} years away."
+give_ret_year = f"You are looking to retire in the year {now.year+ret_age -user_age}\n"  
+print(give_ret_age)
+print(give_ret_yrs_away)
+print(give_ret_year)
 
 
 init_bal = int(input("How much do you already have in a retirement account?  "))
@@ -92,6 +104,7 @@ while flag:
 	else:
 		flag = False
 
-print("\nDepositing",dep,"every year into an account increasing",rate*100,"% annually \n   will give you about $1 million at retirement.")
+message = f"\nDepositing ${dep} every year into an account increasing {rate*100: 0.2}% annually \n   will give you about $1 million at retirement."
+print(message)
 
 print("\n \n OK")
