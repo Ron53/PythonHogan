@@ -17,11 +17,16 @@
 #	Ceiling area in sq feet
 #	Gallons of paint needed
 #
+# LIBRARIES
+#	Math
+#
+#
 # MODIFICATION HISTORY
 #	2019-02-20  Created
 #
 #
 
+import math
 
 coverage = 350
 lim = 0
@@ -51,7 +56,7 @@ while(room_width <= lim):
 print(f"The width of {room} is {room_width} feet\n")
 
 area_ft = room_length * room_width
-gallons_needed = area_ft / coverage
+gallons_needed = math.ceil(area_ft / coverage)
 
 
 output_area_ft = f"The area of {room} ceiling is {area_ft} sq feet."
