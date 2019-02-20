@@ -54,7 +54,7 @@ area_ft = room_length * room_width
 area_m = sq_ft_to_sq_m_conv * area_ft
 
 output_area_ft = f"The area of {room} is {area_ft} sq feet."
-output_area_m = f"The area of {room} is {area_m} sq meters."
+output_area_m = f"The area of {room} is {area_m} sq meters./2n"
 print(output_area_ft)
 print(output_area_m)
 print("\n \n OK")
