@@ -43,30 +43,37 @@ sales_tax = 0.055
 
 input_flag = True
 counter = 0
+
+
 item.append( input( f"What is item {counter}?  " ) )
-
-
 while( input_flag ):
+
 	input_no = input( f"How much does {item [ counter ]} cost?  " )
-	input_price = int( input_no )
-	if input_price <= 0:
-		print( f"I think you need a better price, using integers. \n")
-	else:
+	try:
+		input_price = float( input_no )
 		price.append( input_price )
+
 		input_no = input( f"How many items do you have?  " )
-		input_qty = int( input_no )
-		if input_qty <= 0:
-			print( f"You should have at least 1 item.  \n")
-		else:
-			qty.append( input_qty )
-			cost.append( price[ counter ] * qty[ counter ] )
-			print( f"{item[ counter ]}; ${price[ counter ] / 100}; qty {qty[ counter]}; cost { cost[ counter ] } \n\n" )
-			counter = counter + 1
-			input_item = input( f"What is item {counter}?  " )
+		try:
+			input_qty = int( input_no )
+			if input_qty <= 0:
+				print( f"You should have at least 1 item.  \n")
+			else:
+				qty.append( input_qty )
+
+				cost.append( price[ counter ] * qty[ counter ] )
+				print( f"{item[ counter ]}; ${price[ counter ] / 100}; qty {qty[ counter]}; cost { cost[ counter ] } \n\n" )
+
+				counter = counter + 1
+				input_item = input( f"What is item {counter}?  " )
 			if len( input_item ) > 0 :
 				item.append( input_item )
 			else:
 				input_flag = False
+		except ValueError:
+			print( f"Sorry, you need a quantity, a whole number. Please try again." )
+	except ValueError:
+		print( f"Sorry, you need a price, a number with a dollar sign, instead of a string. \n" )
 
 
 #print( f"\n\n\nNo of items = {counter}, { len( item) }, { len( cost ) }, { len( qty) } " )
@@ -82,11 +89,11 @@ print( f"\n\n" )
 
 while( cntr_2 < counter ):
 	total_cost = total_cost + cost[ cntr_2 ]
-	print( f"{ item[ cntr_2 ] } - { qty[ cntr_2 ] } at ${ price[ cntr_2 ]/100 } is ${ cost[ cntr_2 ] /100 }, your balance is ${ total_cost / 100 } " )
+	print( f"{ item[ cntr_2 ] } - { qty[ cntr_2 ] } at ${ price[ cntr_2 ] } is ${ cost[ cntr_2 ] }, your balance is ${ total_cost } " )
 	cntr_2 = cntr_2 + 1
 
-tax = round( sales_tax * total_cost / 100 , 2 )
-print( f"\n  Your subtotal is ${ total_cost / 100 }\n  Sales tax is ${ tax }\n\n  Your total is ${ (total_cost / 100) + tax }\n\nTHANK YOU FOR SHOPPING WITH US TODAY! \n\n\n\n\n")
+tax = round( sales_tax * total_cost , 2 )
+print( f"\n  Your subtotal is ${ total_cost }\n  Sales tax is ${ tax }\n\n  Your total is ${ (total_cost ) + tax }\n\nTHANK YOU FOR SHOPPING WITH US TODAY! \n\n\n\n\n")
 
 
 
